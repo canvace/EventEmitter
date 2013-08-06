@@ -2,6 +2,13 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
+		meta: {
+			banner: '/*! EventEmitter - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+				' * Author: Alberto La Rocca <alberto.larocca@canvace.com> (https://github.com/71104)\n' +
+				' * Released under the MIT license\n' +
+				' * Copyright (c) <%= grunt.template.today("yyyy") %> Canvace Srl */\n'
+		},
+
 		jshint: {
 			options: {
 				camelcase: true,
@@ -28,11 +35,12 @@ module.exports = function (grunt) {
 		},
 
 		clean: {
-			dist: ['bin']
+			dist: ['bin', 'doc']
 		},
 
 		uglify: {
 			options: {
+				banner: '<%= meta.banner %>',
 				report: 'min'
 			},
 			dist: {
@@ -62,5 +70,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
-	grunt.registerTask('default', ['jshint', 'uglify']);
+	grunt.registerTask('default', ['jshint', 'uglify', 'yuidoc']);
 };
