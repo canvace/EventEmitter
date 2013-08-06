@@ -1,0 +1,20 @@
+{
+	"name": "EventEmitter",
+	"version": "1.0.0",
+	"homepage": "https://github.com/canvace/EventEmitter",
+	"bugs": "https://github.com/canvace/EventEmitter/issues",
+	"license": "MIT",
+	"author": "Alberto La Rocca <alberto.larocca@canvace.com> (https://github.com/71104)",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/canvace/EventEmitter.git"
+	},
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-contrib-clean": "~0.5.0",
+		"grunt-contrib-jshint": "~0.6.2",
+		"grunt-contrib-uglify": "~0.2.2",
+		"grunt-contrib-yuidoc": "~0.4.0"
+	},
+	"private": true
+}
