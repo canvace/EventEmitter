@@ -1,4 +1,4 @@
 EventEmitter Class
 ==================
 
-See the [docs](docs/).
+See the [docs](doc/).
