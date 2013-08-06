@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src\EventEmitter.js - EventEmitter</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="EventEmitter"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/EventEmitter.html">EventEmitter</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src\EventEmitter.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * Represents an object that can bind event handlers to arbitrary event names
+ * and fire events.
+ *
+ * Inheriting this class gives a descendant the ability to register and fire
+ * arbitrary events. You can inherit this class by using the
+ * {{#crossLink &quot;Function&quot;}}Function{{/crossLink}}.call method of the
+ * EventEmitter constructor in your class&#x27;s constructor (see the example below).
+ *
+ * @class EventEmitter
+ * @constructor
+ * @example
+ *	function Descendant() {
+ *		EventEmitter.call(this);
+ *	
+ *		this.otherMethod = function () {
+ *			// ...
+ *		};
+ *	
+ *		// other methods and properties
+ *	}
+ *	
+ *	var object = new Descendant();
+ *	
+ *	object.on(&#x27;salute&#x27;, function () {
+ *		alert(&#x27;Hello, world!&#x27;);
+ *	});
+ *	
+ *	object.emit(&#x27;salute&#x27;);
+ */
+function EventEmitter() {
+	&#x27;use strict&#x27;;
+
+	var thisObject = this;
+	var handlerMap = {};
+
+	/**
+	 * Binds the specified event handler to the specified event name.
+	 *
+	 * The event name can contain any characters.
+	 *
+	 * @method bind
+	 * @chainable
+	 * @param name {String} The name of the event.
+	 * @param handler {Function} The event handler.
+	 * @param [scope] {Object} An optional object used as &#x60;this&#x60; when the
+	 * handler is invoked.
+	 */
+
+	/**
+	 * An alias for {{#crossLink &quot;EventEmitter/bind&quot;}}bind{{/crossLink}}.
+	 *
+	 * @method on
+	 * @chainable
+	 * @param name {String} The name of the event.
+	 * @param handler {Function} The event handler.
+	 * @param [scope] {Object} An optional object used as &#x60;this&#x60; when the
+	 * handler is invoked.
+	 */
+
+	this.bind = this.on = function (name, handler, scope) {
+		if (!handlerMap.hasOwnProperty(name)) {
+			handlerMap[name] = [];
+		}
+		handlerMap[name].push(handler.bind(scope));
+		return thisObject;
+	};
+
+	/**
+	 * Unbinds a previously bound event handler from the specified event name.
+	 *
+	 * @method unbind
+	 * @chainable
+	 * @param name {String} The name of the event.
+	 * @param handler {Function} The previously bound event handler. It must be
+	 * *exactly* the same function reference used in the
+	 * {{#crossLink &quot;EventEmitter/bind&quot;}}bind{{/crossLink}} or
+	 * {{#crossLink &quot;EventEmitter/on&quot;}}on{{/crossLink}} call.
+	 */
+
+	/**
+	 * An alias for {{#crossLink &quot;EventEmitter/unbind&quot;}}unbind{{/crossLink}}.
+	 *
+	 * @method un
+	 * @chainable
+	 * @param name {String} The name of the event.
+	 * @param handler {Function} The previously bound event handler. It must be
+	 * *exactly* the same function reference used in the
+	 * {{#crossLink &quot;EventEmitter/bind&quot;}}bind{{/crossLink}} or
+	 * {{#crossLink &quot;EventEmitter/on&quot;}}on{{/crossLink}} call.
+	 */
+
+	this.unbind = this.un = function (name, handler) {
+		if (handlerMap.hasOwnProperty(name)) {
+			for (var i in handlerMap[name]) {
+				if (handlerMap[name].hasOwnProperty(i) &amp;&amp; (handlerMap[name][i] === handler)) {
+					handlerMap.splice(i, 1);
+					break;
+				}
+			}
+		}
+		return thisObject;
+	};
+
+	/**
+	 * Fires the specified event.
+	 *
+	 * You can optionally pass any number of arguments that will be forwarded to
+	 * the handlers.
+	 *
+	 * @method trigger
+	 * @chainable
+	 * @param name {String} The name of the event to fire.
+	 * @param [arguments]* {Any} Zero or more arguments to forward to the
+	 * handlers.
+	 */
+
+	/**
+	 * An alias for {{#crossLink &quot;EventEmitter/trigger&quot;}}trigger{{/crossLink}}.
+	 *
+	 * @method emit
+	 * @chainable
+	 * @param name {String} The name of the event to fire.
+	 * @param [arguments]* {Any} Zero or more arguments to forward to the
+	 * handlers.
+	 */
+
+	this.trigger = this.emit = function (name) {
+		if (handlerMap.hasOwnProperty(name)) {
+			var parameters = [];
+			for (var i = 1; i &lt; arguments.length; i++) {
+				parameters.push(arguments[i]);
+			}
+			for (var j in handlerMap[name]) {
+				if (handlerMap[name].hasOwnProperty(j)) {
+					handlerMap[name][j].apply(null, parameters);
+				}
+			}
+		}
+		return thisObject;
+	};
+}
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

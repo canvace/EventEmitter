@@ -1,0 +1,183 @@
+{
+    "project": {
+        "name": "EventEmitter",
+        "description": "",
+        "version": "1.0.0",
+        "url": "https://github.com/canvace/EventEmitter"
+    },
+    "files": {
+        "src\\EventEmitter.js": {
+            "name": "src\\EventEmitter.js",
+            "modules": {},
+            "classes": {
+                "EventEmitter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "EventEmitter": {
+            "name": "EventEmitter",
+            "shortname": "EventEmitter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src\\EventEmitter.js",
+            "line": 1,
+            "description": "Represents an object that can bind event handlers to arbitrary event names\nand fire events.\n\nInheriting this class gives a descendant the ability to register and fire\narbitrary events. You can inherit this class by using the\n{{#crossLink \"Function\"}}Function{{/crossLink}}.call method of the\nEventEmitter constructor in your class's constructor (see the example below).",
+            "is_constructor": 1,
+            "example": [
+                "\n\tfunction Descendant() {\n\t\tEventEmitter.call(this);\n\t\n\t\tthis.otherMethod = function () {\n\t\t\t// ...\n\t\t};\n\t\n\t\t// other methods and properties\n\t}\n\t\n\tvar object = new Descendant();\n\t\n\tobject.on('salute', function () {\n\t\talert('Hello, world!');\n\t});\n\t\n\tobject.emit('salute');"
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "src\\EventEmitter.js",
+            "line": 37,
+            "description": "Binds the specified event handler to the specified event name.\n\nThe event name can contain any characters.",
+            "itemtype": "method",
+            "name": "bind",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the event.",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "The event handler.",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "An optional object used as `this` when the\nhandler is invoked.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "EventEmitter"
+        },
+        {
+            "file": "src\\EventEmitter.js",
+            "line": 50,
+            "description": "An alias for {{#crossLink \"EventEmitter/bind\"}}bind{{/crossLink}}.",
+            "itemtype": "method",
+            "name": "on",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the event.",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "The event handler.",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "An optional object used as `this` when the\nhandler is invoked.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "EventEmitter"
+        },
+        {
+            "file": "src\\EventEmitter.js",
+            "line": 69,
+            "description": "Unbinds a previously bound event handler from the specified event name.",
+            "itemtype": "method",
+            "name": "unbind",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the event.",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "The previously bound event handler. It must be\n*exactly* the same function reference used in the\n{{#crossLink \"EventEmitter/bind\"}}bind{{/crossLink}} or\n{{#crossLink \"EventEmitter/on\"}}on{{/crossLink}} call.",
+                    "type": "Function"
+                }
+            ],
+            "class": "EventEmitter"
+        },
+        {
+            "file": "src\\EventEmitter.js",
+            "line": 81,
+            "description": "An alias for {{#crossLink \"EventEmitter/unbind\"}}unbind{{/crossLink}}.",
+            "itemtype": "method",
+            "name": "un",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the event.",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "The previously bound event handler. It must be\n*exactly* the same function reference used in the\n{{#crossLink \"EventEmitter/bind\"}}bind{{/crossLink}} or\n{{#crossLink \"EventEmitter/on\"}}on{{/crossLink}} call.",
+                    "type": "Function"
+                }
+            ],
+            "class": "EventEmitter"
+        },
+        {
+            "file": "src\\EventEmitter.js",
+            "line": 105,
+            "description": "Fires the specified event.\n\nYou can optionally pass any number of arguments that will be forwarded to\nthe handlers.",
+            "itemtype": "method",
+            "name": "trigger",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the event to fire.",
+                    "type": "String"
+                },
+                {
+                    "name": "arguments",
+                    "description": "Zero or more arguments to forward to the\nhandlers.",
+                    "type": "Any",
+                    "optional": true,
+                    "multiple": true
+                }
+            ],
+            "class": "EventEmitter"
+        },
+        {
+            "file": "src\\EventEmitter.js",
+            "line": 118,
+            "description": "An alias for {{#crossLink \"EventEmitter/trigger\"}}trigger{{/crossLink}}.",
+            "itemtype": "method",
+            "name": "emit",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the event to fire.",
+                    "type": "String"
+                },
+                {
+                    "name": "arguments",
+                    "description": "Zero or more arguments to forward to the\nhandlers.",
+                    "type": "Any",
+                    "optional": true,
+                    "multiple": true
+                }
+            ],
+            "class": "EventEmitter"
+        }
+    ],
+    "warnings": []
+}
