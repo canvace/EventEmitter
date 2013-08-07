@@ -81,7 +81,7 @@ function EventEmitter() {
 	/**
 	 * An alias for {{#crossLink "EventEmitter/unbind"}}unbind{{/crossLink}}.
 	 *
-	 * @method un
+	 * @method off
 	 * @chainable
 	 * @param name {String} The name of the event.
 	 * @param handler {Function} The previously bound event handler. It must be
@@ -90,7 +90,7 @@ function EventEmitter() {
 	 * {{#crossLink "EventEmitter/on"}}on{{/crossLink}} call.
 	 */
 
-	this.unbind = this.un = function (name, handler) {
+	this.unbind = this.off = function (name, handler) {
 		if (handlerMap.hasOwnProperty(name)) {
 			for (var i in handlerMap[name]) {
 				if (handlerMap[name].hasOwnProperty(i) && (handlerMap[name][i] === handler)) {
