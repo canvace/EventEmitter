@@ -116,7 +116,7 @@
             "line": 81,
             "description": "An alias for {{#crossLink \"EventEmitter/unbind\"}}unbind{{/crossLink}}.",
             "itemtype": "method",
-            "name": "un",
+            "name": "off",
             "chainable": 1,
             "params": [
                 {
