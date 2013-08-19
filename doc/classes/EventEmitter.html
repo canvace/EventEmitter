@@ -246,6 +246,13 @@ object.emit(&#39;salute&#39;);</code></pre>
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_once">once</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_trigger">trigger</a>
 
                                 
@@ -463,7 +470,7 @@ handler is invoked.</p>
             
         
         
-        <a href="../files/src_EventEmitter.js.html#l118"><code>src\EventEmitter.js:118</code></a>
+        <a href="../files/src_EventEmitter.js.html#l160"><code>src\EventEmitter.js:160</code></a>
         
         </p>
 
@@ -580,7 +587,7 @@ handlers.</p>
             
         
         
-        <a href="../files/src_EventEmitter.js.html#l81"><code>src\EventEmitter.js:81</code></a>
+        <a href="../files/src_EventEmitter.js.html#l123"><code>src\EventEmitter.js:123</code></a>
         
         </p>
 
@@ -783,6 +790,147 @@ handler is invoked.</p>
 </div>
 
                 
+                    <div id="method_once" class="method item">
+    <h3 class="name"><code>once</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>handler</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[scope]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_EventEmitter.js.html#l78"><code>src\EventEmitter.js:78</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Binds the specified event handler to the specified event name.</p>
+<p>The event name can contain any characters.</p>
+<p>The difference with <a href="..\classes\EventEmitter.html#method_on" class="crosslink">on</a> is
+that handlers registered with this method are executed at most once and
+then automatically unbound.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of the event.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">handler</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The event handler.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[scope]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>An optional object used as <code>this</code> when the
+handler is invoked.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method_trigger" class="method item">
     <h3 class="name"><code>trigger</code></h3>
 
@@ -833,7 +981,7 @@ handler is invoked.</p>
             
         
         
-        <a href="../files/src_EventEmitter.js.html#l105"><code>src\EventEmitter.js:105</code></a>
+        <a href="../files/src_EventEmitter.js.html#l147"><code>src\EventEmitter.js:147</code></a>
         
         </p>
 
@@ -952,7 +1100,7 @@ handlers.</p>
             
         
         
-        <a href="../files/src_EventEmitter.js.html#l69"><code>src\EventEmitter.js:69</code></a>
+        <a href="../files/src_EventEmitter.js.html#l111"><code>src\EventEmitter.js:111</code></a>
         
         </p>
 

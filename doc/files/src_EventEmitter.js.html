@@ -150,7 +150,49 @@ function EventEmitter() {
 		if (!handlerMap.hasOwnProperty(name)) {
 			handlerMap[name] = [];
 		}
-		handlerMap[name].push(handler.bind(scope));
+		for (var i in handlerMap[name]) {
+			if (handlerMap[name].hasOwnProperty(i) &amp;&amp; (handlerMap[name][i].handler === handler)) {
+				handlerMap[name][i].once = false;
+				return thisObject;
+			}
+		}
+		handlerMap[name].push({
+			handler: handler.bind(scope),
+			once: false
+		});
+		return thisObject;
+	};
+
+	/**
+	 * Binds the specified event handler to the specified event name.
+	 *
+	 * The event name can contain any characters.
+	 *
+	 * The difference with {{#crossLink &quot;EventEmitter/on&quot;}}on{{/crossLink}} is
+	 * that handlers registered with this method are executed at most once and
+	 * then automatically unbound.
+	 *
+	 * @method once
+	 * @chainable
+	 * @param name {String} The name of the event.
+	 * @param handler {Function} The event handler.
+	 * @param [scope] {Object} An optional object used as &#x60;this&#x60; when the
+	 * handler is invoked.
+	 */
+	this.once = function (name, handler, scope) {
+		if (!handlerMap.hasOwnProperty(name)) {
+			handlerMap[name] = [];
+		}
+		for (var i in handlerMap[name]) {
+			if (handlerMap[name].hasOwnProperty(i) &amp;&amp; (handlerMap[name][i].handler === handler)) {
+				handlerMap[name][i].once = true;
+				return thisObject;
+			}
+		}
+		handlerMap[name].push({
+			handler: handler.bind(scope),
+			once: true
+		});
 		return thisObject;
 	};
 
@@ -181,7 +223,7 @@ function EventEmitter() {
 	this.unbind = this.off = function (name, handler) {
 		if (handlerMap.hasOwnProperty(name)) {
 			for (var i in handlerMap[name]) {
-				if (handlerMap[name].hasOwnProperty(i) &amp;&amp; (handlerMap[name][i] === handler)) {
+				if (handlerMap[name].hasOwnProperty(i) &amp;&amp; (handlerMap[name][i].handler === handler)) {
 					handlerMap.splice(i, 1);
 					break;
 				}
@@ -215,13 +257,21 @@ function EventEmitter() {
 
 	this.trigger = this.emit = function (name) {
 		if (handlerMap.hasOwnProperty(name)) {
-			var parameters = [];
-			for (var i = 1; i &lt; arguments.length; i++) {
+			var i, parameters = [];
+			for (i = 1; i &lt; arguments.length; i++) {
 				parameters.push(arguments[i]);
 			}
-			for (var j in handlerMap[name]) {
-				if (handlerMap[name].hasOwnProperty(j)) {
-					handlerMap[name][j].apply(null, parameters);
+			for (i in handlerMap[name]) {
+				if (handlerMap[name].hasOwnProperty(i)) {
+					handlerMap[name][i].handler.apply(null, parameters);
+				}
+			}
+			i = 0;
+			while (i &lt; handlerMap[name].length) {
+				if (handlerMap[name].hasOwnProperty(i) &amp;&amp; handlerMap[name][i].once) {
+					handlerMap[name].splice(i, 1);
+				} else {
+					i++;
 				}
 			}
 		}

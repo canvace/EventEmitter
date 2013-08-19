@@ -92,7 +92,34 @@
         },
         {
             "file": "src\\EventEmitter.js",
-            "line": 69,
+            "line": 78,
+            "description": "Binds the specified event handler to the specified event name.\n\nThe event name can contain any characters.\n\nThe difference with {{#crossLink \"EventEmitter/on\"}}on{{/crossLink}} is\nthat handlers registered with this method are executed at most once and\nthen automatically unbound.",
+            "itemtype": "method",
+            "name": "once",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the event.",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "The event handler.",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "An optional object used as `this` when the\nhandler is invoked.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "EventEmitter"
+        },
+        {
+            "file": "src\\EventEmitter.js",
+            "line": 111,
             "description": "Unbinds a previously bound event handler from the specified event name.",
             "itemtype": "method",
             "name": "unbind",
@@ -113,7 +140,7 @@
         },
         {
             "file": "src\\EventEmitter.js",
-            "line": 81,
+            "line": 123,
             "description": "An alias for {{#crossLink \"EventEmitter/unbind\"}}unbind{{/crossLink}}.",
             "itemtype": "method",
             "name": "off",
@@ -134,7 +161,7 @@
         },
         {
             "file": "src\\EventEmitter.js",
-            "line": 105,
+            "line": 147,
             "description": "Fires the specified event.\n\nYou can optionally pass any number of arguments that will be forwarded to\nthe handlers.",
             "itemtype": "method",
             "name": "trigger",
@@ -157,7 +184,7 @@
         },
         {
             "file": "src\\EventEmitter.js",
-            "line": 118,
+            "line": 160,
             "description": "An alias for {{#crossLink \"EventEmitter/trigger\"}}trigger{{/crossLink}}.",
             "itemtype": "method",
             "name": "emit",
