@@ -204,6 +204,24 @@
                 }
             ],
             "class": "EventEmitter"
+        },
+        {
+            "file": "src\\EventEmitter.js",
+            "line": 193,
+            "description": "Adds a `name` method to this object. The new method can bind or trigger\nthe `name` event.\n\nThe new method is chainable and has two signatures, corresponding to the\n{{#crossLink \"EventEmitter/bind\"}}bind/on{{/crossLink}} and\n{{#crossLink \"EventEmitter/trigger\"}}trigger/emit{{/crossLink}} methods.",
+            "itemtype": "method",
+            "name": "register",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "String The name of the new method and event to handle."
+                }
+            ],
+            "example": [
+                "\n\temitter.register('salute');\n\n\t// binds a handler to the 'salute' event\n\temitter.salute(function () {\n\t\talert('Hello, world!');\n\t});\n\n\temitter.salute(); // triggers the 'salute' event"
+            ],
+            "class": "EventEmitter"
         }
     ],
     "warnings": []
