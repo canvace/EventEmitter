@@ -1,0 +1,5 @@
+/*! EventEmitter - v1.0.0 - 2013-10-20
+ * Author: Alberto La Rocca <alberto.larocca@canvace.com> (https://github.com/71104)
+ * Released under the MIT license
+ * Copyright (c) 2013 Canvace Srl */
+function EventEmitter(){"use strict";var a=this,b={};this.bind=this.on=function(c,d,e){b.hasOwnProperty(c)||(b[c]=[]);for(var f in b[c])if(b[c].hasOwnProperty(f)&&b[c][f].handler===d)return b[c][f].once=!1,a;return b[c].push({handler:d.bind(e),once:!1}),a},this.once=function(c,d,e){b.hasOwnProperty(c)||(b[c]=[]);for(var f in b[c])if(b[c].hasOwnProperty(f)&&b[c][f].handler===d)return b[c][f].once=!0,a;return b[c].push({handler:d.bind(e),once:!0}),a},this.unbind=this.off=function(c,d){if(b.hasOwnProperty(c))for(var e in b[c])if(b[c].hasOwnProperty(e)&&b[c][e].handler===d){b.splice(e,1);break}return a},this.trigger=this.emit=function(c){if(b.hasOwnProperty(c)){var d,e=[];for(d=1;d<arguments.length;d++)e.push(arguments[d]);for(d in b[c])b[c].hasOwnProperty(d)&&b[c][d].handler.apply(null,e);for(d=0;d<b[c].length;)b[c].hasOwnProperty(d)&&b[c][d].once?b[c].splice(d,1):d++}return a},this.register=function(b){return a[b]=function(c,d){return c?a.bind(b,c,d):a.trigger(b)},a}}
