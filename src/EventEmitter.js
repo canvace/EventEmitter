@@ -189,4 +189,36 @@ function EventEmitter() {
 		}
 		return thisObject;
 	};
+
+	/**
+	 * Adds a `name` method to this object. The new method can bind or trigger
+	 * the `name` event.
+	 *
+	 * The new method is chainable and has two signatures, corresponding to the
+	 * {{#crossLink "EventEmitter/bind"}}bind/on{{/crossLink}} and
+	 * {{#crossLink "EventEmitter/trigger"}}trigger/emit{{/crossLink}} methods.
+	 *
+	 * @method register
+	 * @chainable
+	 * @param name String The name of the new method and event to handle.
+	 * @example
+	 *	emitter.register('salute');
+	 *
+	 *	// binds a handler to the 'salute' event
+	 *	emitter.salute(function () {
+	 *		alert('Hello, world!');
+	 *	});
+	 *
+	 *	emitter.salute(); // triggers the 'salute' event
+	 */
+	this.register = function (name) {
+		thisObject[name] = function (handler, scope) {
+			if (handler) {
+				return thisObject.bind(name, handler, scope);
+			} else {
+				return thisObject.trigger(name);
+			}
+		};
+		return thisObject;
+	};
 }
